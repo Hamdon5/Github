@@ -25,6 +25,14 @@ git reset命令既可以回退版本，也可以把暂存区的修改回退到�
 但只能恢复文件到最新版本，你会丢失最近一次提交后你修改的内容;
 
 3.删除文件：若要的确删除文件，则用命令git rm删掉，并且git commit
+当你要删除文件的时候，可以采用命令：rm test.txt
+这个时候有两种情况:
+第一种情况:的确要把test.txt删掉，那么可以执行
+                   git rm test.txt
+                   git commit -m "remove test.txt"
+                   文件被删除，且删除记录上传本地库
+第二种情况:误删文件，想恢复，这时候还没有commit -m "remove test.txt"，执行git checkout test.txt将文件恢复。
+如果执行完git commit -m "remove test.txt"后就不能用checkout恢复了，得用git reset --hard HEAD^
 
 学习Git：远程仓库
 要关联一个远程库，使用命令git remote add origin git@server-name:path/repo-name.git；
